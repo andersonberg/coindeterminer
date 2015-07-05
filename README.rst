@@ -61,6 +61,19 @@ To run the project it's simple, just run the following command::
 
 The site will be available via browser at http://localhost:8000/
 
+Populate database
+=================
+
+The only objects stored in database are the coins. Accessing the admin area you can add the available coins to run the project.
+
+A coin has only one attribute, its value.
+
+
+The Views
+=========
+
+We used Class Based Views from Django. We choose this before FBV, because is more suitable for our needs and CBV easy the way we handle form data.
+
 The Solution
 =============
 
