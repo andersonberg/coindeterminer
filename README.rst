@@ -40,19 +40,16 @@ For production::
 Create the database
 ====================
 
-This step probably is the more complex (but still very simple), you need to open the psql and create a role and a database:
+This step probably is the more complex (but still very simple), you need to open the psql and create a role and a database::
 
-```sql
+    CREATE USER postgres LOGIN CREATEDB PASSWORD 'postgres';
+    CREATE DATABASE coindeterminerdb OWNER postgres;
 
-CREATE USER postgres LOGIN CREATEDB PASSWORD 'postgres';
-CREATE DATABASE coindeterminerdb OWNER postgres;
+And to conclude, migrate the database and run the project::
 
-And to conclude, migrate the database and run the project:
-
-```bash
-#path: coindeterminer_project/coindeterminer_project/
-$ python manage.py makemigrations
-$ python manage.py migrate
+    #path: coindeterminer_project/coindeterminer_project/
+    $ python manage.py makemigrations
+    $ python manage.py migrate
 
 Run the project
 ================
