@@ -67,6 +67,7 @@ The Solution
 To solve the Coin Determiner problem, we take different solutions by starting with each coin available. Then the minimal solution is chosen.
 
 Each solution is built in the following way:
+
 #. The quotient between the number provided and the first coin (in a sorted list) indicates de amount of a certain coin we must use.
 #. The rest indicates how much is required to reach the total amount.
 #. The rest is user do get a new quotient, this time using the next coin available in the sorted list.
