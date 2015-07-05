@@ -10,7 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', HomeView.as_view(template_name='home.html')),
-    url(r'^upload/', HomeView.as_view(), name='upload'),
+    url(r'^$', HomeView.as_view(), name='upload'),
 
     # Examples:
     # url(r'^$', 'coindeterminer_project.views.home', name='home'),
