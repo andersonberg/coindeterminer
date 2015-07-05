@@ -1,1 +1,4 @@
-/*! project specific CSS goes here. */
+body {
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #f2f2f2;
+}
