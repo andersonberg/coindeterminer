@@ -16,6 +16,7 @@ Install Postgres
 =================
 
 The installation depends on which operational system you are using.
+Please, refer to https://wiki.postgresql.org/wiki/Detailed_installation_guides for further instructions.
 
 Installing Django
 =================
