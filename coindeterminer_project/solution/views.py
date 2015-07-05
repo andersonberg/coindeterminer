@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.template import RequestContext
@@ -14,6 +14,9 @@ class HomeView(TemplateView):
     form_class = InputForm
 
     def clear(self):
+        """
+        Clear the lists
+        """
         self.input_list.clear()
         self.output_list.clear()
 
@@ -60,7 +63,7 @@ class HomeView(TemplateView):
         rest = num % current_coin
 
         # if the quotient is equals to 0 or the rest is different from 0, sums the current quotient
-        # and the quotient of the division between the next coin available and the current rest
+        # with the recursively call passing the next coin available and the current rest
         # if not, returns the current quotient
         if quotient == 0 or (rest != 0 and coin_position < len(self.list_coins)):
             coin_position += 1
@@ -85,10 +88,12 @@ class HomeView(TemplateView):
         :return: The solution
         """
         solutions = []
+        # Get solutions starting from each coin
         for i in range(len(self.list_coins)):
             local_solution = self.get_partial_solution(num, i)
             solutions.append(local_solution)
 
+        # Returns the minimal solution
         return min(solutions)
 
     def save_document(self, docfile, docpath):
