@@ -13,16 +13,19 @@ class HomeView(TemplateView):
     output_list = []
     form_class = InputForm
 
-    def get(self, request, *args, **kwargs):
+    def clear(self):
         self.input_list.clear()
         self.output_list.clear()
+
+    def get(self, request, *args, **kwargs):
+        self.clear()
         self.list_coins.clear()
         self.get_coins()
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
-        # import pdb;pdb.set_trace()
+        self.clear()
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             # get a document from form
