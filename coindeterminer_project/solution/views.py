@@ -2,8 +2,7 @@ import os
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
-from django.template import RequestContext
-from .models import Coin, Solution
+from .models import Coin
 from .forms import InputForm
 
 class HomeView(TemplateView):

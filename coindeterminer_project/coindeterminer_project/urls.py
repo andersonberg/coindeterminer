@@ -9,7 +9,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', HomeView.as_view(template_name='home.html')),
+    url(r'^$', HomeView.as_view()),
     url(r'^$', HomeView.as_view(), name='upload'),
 
     # Examples:
