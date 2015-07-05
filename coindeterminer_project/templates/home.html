@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><button type="submit" class="button">Enviar</button></p>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        {% if inputs %}
+            <h3>Input</h3>
+            {% for input in inputs %}
+                <p>{{input}}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="col-lg-6">
+        {% if outputs %}
+            <h3>Output</h3>
+            {% for output in outputs %}
+                <p>{{output}}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
