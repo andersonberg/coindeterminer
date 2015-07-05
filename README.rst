@@ -1,78 +1,28 @@
-========================
-django-twoscoops-project
-========================
+================
+Coin Determiner
+================
 
-A project template for Django 1.6 (with a tag for Django 1.5).
+This site was built with Django web framework (version 1.8.2) and Python (version 3.4). The database used to store objects was postgresql.
 
 To use this project follow these steps:
 
-#. Create your working environment
+#. Install Postgresql
 #. Install Django
-#. Create the new project using the django-two-scoops template
 #. Install additional dependencies
-#. Use the Django admin to create the project
+#. Create the database
+#. Run the project
 
-*note: these instructions show creation of a project called "icecream".  You
-should replace this name with the actual name of your project.*
+Install Postgres
+=================
 
-Working Environment
-===================
-
-You have several options in setting up your working environment.  We recommend
-using virtualenv to separate the dependencies of your project from your system's
-python environment.  If on Linux or Mac OS X, you can also use virtualenvwrapper to help manage multiple virtualenvs across different projects.
-
-Virtualenv Only
----------------
-
-First, make sure you are using virtualenv (http://www.virtualenv.org). Once
-that's installed, create your virtualenv::
-
-    $ virtualenv icecream
-
-You will also need to ensure that the virtualenv has the project directory
-added to the path. Adding the project directory will allow `django-admin.py` to
-be able to change settings using the `--settings` flag.
-
-Virtualenv with virtualenvwrapper
-------------------------------------
-
-In Linux and Mac OSX, you can install virtualenvwrapper (http://virtualenvwrapper.readthedocs.org/en/latest/),
-which will take care of managing your virtual environments and adding the
-project path to the `site-directory` for you::
-
-    $ mkdir icecream
-    $ mkvirtualenv -a icecream icecream-dev
-    $ cd icecream && add2virtualenv `pwd`
-
-Using virtualenvwrapper with Windows
-----------------------------------------
-
-There is a special version of virtualenvwrapper for use with Windows (https://pypi.python.org/pypi/virtualenvwrapper-win).::
-
-    > mkdir icecream
-    > mkvirtualenv icecream-dev
-    > add2virtualenv icecream
-
+The installation depends on which operational system you are using.
 
 Installing Django
 =================
 
-To install Django in the new virtual environment, run the following command::
+To install Django, run the following command::
 
     $ pip install django
-
-Creating your project
-=====================
-
-To create a new Django project called '**icecream**' using
-django-twoscoops-project, run the following command::
-
-    $ django-admin.py startproject --template=https://github.com/twoscoops/django-twoscoops-project/archive/master.zip --extension=py,rst,html icecream_project
-
-For Django 1.5 users, we recommend::
-
-    $ django-admin.py startproject --template=https://github.com/twoscoops/django-twoscoops-project/archive/1.5.zip --extension=py,rst,html icecream_project
 
 Installation of Dependencies
 =============================
@@ -87,26 +37,28 @@ For production::
 
     $ pip install -r requirements.txt
 
-*note: We install production requirements this way because many Platforms as a
-Services expect a requirements.txt file in the root of projects.*
+Create the database
+====================
 
-Follows Best Practices
-======================
+This step probably is the more complex (but still very simple), you need to open the psql and create a role and a database:
 
-.. image:: http://twoscoops.smugmug.com/Two-Scoops-Press-Media-Kit/i-C8s5jkn/0/O/favicon-152.png
-   :name: Two Scoops Logo
-   :align: center
-   :alt: Two Scoops of Django
-   :target: http://twoscoopspress.org/products/two-scoops-of-django-1-6
+```sql
 
-This project follows best practices as espoused in `Two Scoops of Django: Best Practices for Django 1.6`_.
+CREATE USER postgres LOGIN CREATEDB PASSWORD 'postgres';
+CREATE DATABASE coindeterminerdb OWNER postgres;
 
-.. _`Two Scoops of Django: Best Practices for Django 1.6`: http://twoscoopspress.org/products/two-scoops-of-django-1-6
+And to conclude, migrate the database and run the project:
 
-Acknowledgements
+```bash
+#path: coindeterminer_project/coindeterminer_project/
+$ python manage.py makemigrations
+$ python manage.py migrate
+
+Run the project
 ================
 
-- Many thanks to Randall Degges for the inspiration to write the book and django-skel.
-- All of the contributors_ to this project.
+To run the project it's simple, just run the following command::
 
-.. _contributors: https://github.com/twoscoops/django-twoscoops-project/blob/master/CONTRIBUTORS.txt
+    $ python manage.py runserver
+
+The site will be available via browser at http://localhost:8000/
